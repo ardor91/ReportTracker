@@ -1,0 +1,9 @@
+<h2>My Students</h2>
+ 
+<ul class="students">
+  <li *ngFor="let student of students">
+
+      <span class="badge">{{student.id}}</span> {{student.firstName}} {{student.lastName}}
+
+  </li>
+</ul>
