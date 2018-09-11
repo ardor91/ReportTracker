@@ -1,0 +1,8 @@
+<div *ngIf="student">
+  <h2>{{student.firstName + student.lastName | uppercase}} Page</h2>
+  <div><span>id: </span>{{student.id}}</div>
+  <div>
+    Olala
+  </div>
+  <button mat-raised-button (click)="goBack()">go back</button>
+</div>
