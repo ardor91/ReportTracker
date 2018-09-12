@@ -18,3 +18,38 @@
     margin: 20px;
     margin-left: 40px;
 }
+
+.student-item {
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+
+    position: relative;
+    padding: 15px;
+    border-radius: 2px;
+    background: #fff;
+    color: rgba(0,0,0,.87);
+    width: 100%;
+    display: flex;
+    margin: 10px;
+}
+
+.number {
+    font: 500 20px/32px Roboto,"Helvetica Neue",sans-serif;
+    margin: 4px 20px 0px 12px;
+}
+
+.header, .tutor {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    margin: 0px 15px 0px 15px;
+}
+
+.level, .reports, .study-time, .status {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    margin: 10px 35px 0 25px;
+}
+
+.mat-card-subtitle {
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+

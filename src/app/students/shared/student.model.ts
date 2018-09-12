@@ -7,6 +7,8 @@ export class Student {
     firstName: string;
     lastName: string;
     level: number;
+    startDate: string;
+    status: string;
     head: Employee;
     contacts: Contact[];
     skills: Skill[];

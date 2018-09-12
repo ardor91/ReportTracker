@@ -1,5 +1,46 @@
 <div class="title">Available Students</div>
 <div class="content">
+  <div class="student-item" *ngFor="let student of students">
+      <div class="number">
+        1
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="header">
+          <mat-card-header>
+              <div mat-card-avatar class="student-header"><i class="material-icons">
+                  face
+                  </i></div>
+              <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
+              <mat-card-subtitle>Student</mat-card-subtitle>
+            </mat-card-header>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="tutor">
+          <mat-card-header>
+              <div mat-card-avatar class="student-header"><i class="material-icons">
+                  record_voice_over
+                  </i></div>
+              <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
+              <mat-card-subtitle>Tutor</mat-card-subtitle>
+            </mat-card-header>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="level">
+          <span matBadge="99" matBadgeOverlap="false">Level</span>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="reports">
+          <span matBadge="99" matBadgeOverlap="false">Reports</span>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="study-time">
+        2 months
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div class="status">
+        Hired
+      </div>
+  </div>
 <mat-card class="student-card" *ngFor="let student of students">
     <mat-card-header>
       <div mat-card-avatar class="student-header"><i class="material-icons">
