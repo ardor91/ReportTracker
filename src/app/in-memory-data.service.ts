@@ -8,6 +8,8 @@ export class InMemoryDataService implements InMemoryDbService {
         firstName: 'Kek',
         lastName: 'Ololoev',
         head: {},
+        level: 10,
+        startDate: '2014-01-02T00:00:00',
         contacts: [
             {
                 type: "phone",
@@ -50,6 +52,8 @@ export class InMemoryDataService implements InMemoryDbService {
         firstName: 'Sidor',
         lastName: 'Petrov',
         head: {},
+        level: 4,
+        startDate: '2018-09-01T00:00:00',      
         contacts: [
             {
                 type: "phone",
