@@ -22,11 +22,9 @@
     transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
 
     position: relative;
-    padding: 15px;
     border-radius: 2px;
     background: #fff;
     color: rgba(0,0,0,.87);
-    width: 100%;
     display: flex;
     margin: 10px;
     justify-content: space-around;
@@ -50,11 +48,15 @@
 .header, .tutor {
     font-family: Roboto,"Helvetica Neue",sans-serif;
     margin: 0px 15px 0px 15px;
+    position: absolute;
+    left: 0px;
 }
 
 .level, .reports, .study-time, .status {
     font-family: Roboto,"Helvetica Neue",sans-serif;
     margin: 3px 35px 0 25px;
+    position: absolute;
+    left: 0px;
 }
 
 .level span,.reports span {
@@ -66,3 +68,10 @@
     margin-top: 5px;
 }
 
+.hidden {
+    display:none;
+}
+
+mat-grid-tile {
+    border-right: 1px #f1f1f1 solid;
+}

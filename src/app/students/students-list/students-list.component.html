@@ -1,52 +1,53 @@
 <div class="title">Available Students</div>
 <div class="content">
-  <div class="student-item" routerLink="/student/{{student.id}}" *ngFor="let student of students; let i = index">
-      <div class="number">
-        {{i+1}}
-      </div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="header">
-        <mat-card>
+    <mat-grid-list routerLink="/student/{{student.id}}" class="student-item" cols="19" rowHeight="60px" *ngFor="let student of students; let i = index">
+        <mat-grid-tile [colspan]="1">
+            <div class="number">
+              {{i+1}}
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <div class="header">                
             <mat-card-header>
-                <div mat-card-avatar class="student-header"><i class="material-icons">
-                    face
-                    </i></div>
-                <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
-                <mat-card-subtitle>Student</mat-card-subtitle>
-              </mat-card-header>
-        </mat-card>
-          
-      </div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="tutor">
-        <mat-card>
-          <mat-card-header>
-            <div mat-card-avatar class="student-header"><i class="material-icons">
-                record_voice_over
-                </i></div>
-            <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
-            <mat-card-subtitle>Tutor</mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
-          
-      </div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="level">
-          Level <span>{{student.level}}</span>
-      </div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="reports">
-          Reports <span>{{getReportsCount(student)}}</span>
-      </div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="study-time">
-        {{getStudyLength(student.startDate)}}
-      </div>
-      <mat-divider [vertical]="true"></mat-divider>
-      <div class="status">
-        Hired
-      </div>
-  </div>
-  
-
+              <div mat-card-avatar class="student-header"><i class="material-icons">
+                  face
+                  </i></div>
+              <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
+              <mat-card-subtitle>Student</mat-card-subtitle>
+            </mat-card-header>                                  
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <div class="tutor">                
+            <mat-card-header>
+              <div mat-card-avatar class="student-header"><i class="material-icons">
+                  record_voice_over
+                  <mat-card class="hidden"></mat-card>
+                  </i></div>
+              <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
+              <mat-card-subtitle>Tutor</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <div class="level">
+            Level <span>{{student.level}}</span>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <div class="reports">
+            Reports <span>{{getReportsCount(student)}}</span>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <div class="study-time">
+            {{getStudyLength(student.startDate)}}
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <div class="status">
+            Hired
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
 </div>
