@@ -67,7 +67,7 @@ export class InMemoryDataService implements InMemoryDbService {
         skills: [
             {
                 name: "Angular",
-                experience: 5
+                experience: 4
             },
             {
                 name: "NodeJS",

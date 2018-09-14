@@ -35,4 +35,28 @@ export class StudentDetailComponent implements OnInit {
     this.location.back();
   }
 
+  ExpToText(exp: number): string {
+    return this.options.filter(
+          option => option.value === exp)[0].name;
+  }
+
+  options = [
+    {
+      name: 'Expert',
+      value: 4
+    },
+    {
+      name: 'Experienced',
+      value: 3
+    },
+    {
+      name: 'Extensive knowledge',
+      value: 2
+    },
+    {
+      name: 'Working knowledge',
+      value: 1
+    }
+  ]
+
 }
