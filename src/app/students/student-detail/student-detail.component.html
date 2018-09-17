@@ -6,8 +6,8 @@
       <div>{{student.firstName + " " + student.lastName}}</div>
       <div class="subtitle">Student</div>
   </div>
-
-  <div class="content">
+<div class="content">
+  <div class="left-content">
     <div class="contacts">
         <mat-card class="contact-card" *ngFor="let contact of student.contacts">
             <mat-card-header>
@@ -17,7 +17,7 @@
                 </i>
               </div>
               <mat-card-title>{{contact.value}}</mat-card-title>
-              <mat-card-subtitle>{{contact.type}}</mat-card-subtitle>
+              <mat-card-subtitle class="subtitle">{{contact.type}}</mat-card-subtitle>
             </mat-card-header>
         </mat-card>
     </div>
@@ -37,13 +37,59 @@
                   </div>
                 </mat-list>
             </mat-card-content>
-          </mat-card>
-        
+        </mat-card>        
     </div>
-
-
-
   </div>
+  <div class="right-content">
+    <div class="tasks" *ngIf="!selectedTask">
+        <mat-card class="task-card" *ngFor="let task of student.tasks">
+            <mat-card-header [ngClass]="task == selectedTask ? 'selected' : ''">
+                <div class="title">
+                    <div matTooltip="{{task.name}}">{{task.name}}</div>
+                    <div class="subtitle">Task</div>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="card-content grid">
+                <div class="task-description">
+                  {{task.description}}
+                </div>
+                <mat-divider></mat-divider>
+                <div class="stats">
+                  <div><span class="stat-title">Start date: </span><span class="stat-value">{{task.startDate | date: 'mediumDate'}}</span></div>
+                  <div *ngIf="task.endDate"><span class="stat-title">End date: </span><span class="stat-value">{{task.endDate | date: 'mediumDate'}}</span></div>
+                  <div *ngIf="task.reports"><span class="stat-title">Reports count: </span><span class="stat-value">{{task.reports.length}}</span></div>
+                  <div *ngIf="task.endDate"><span class="stat-title">Status: </span><span class="stat-value">Finished</span></div>
+                  <div *ngIf="!task.endDate"><span class="stat-title">Duration: </span><span class="stat-value" style="font-weight: bold">{{getDurationTime(task.startDate)}}</span></div>
+                  <div></div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="task-panel">
+                    <button mat-raised-button (click)="selectTask(task)">Reports</button>
+                </div>
+              </div>
+            </mat-card-content>
+        </mat-card> 
+    </div>
+    <div *ngIf="selectedTask">        
+        <mat-card class="task-detailed-card">
+            <mat-card-header>
+                <div class="title">
+                    <div>{{selectedTask.name}}</div>
+                    <div class="subtitle">Task</div>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+              Olala
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="selectedTask = undefined;">Close</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+  </div>
+</div>
+  
 
   <button mat-raised-button (click)="goBack()">go back</button>
 </div>

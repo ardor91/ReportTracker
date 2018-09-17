@@ -5,6 +5,31 @@
     width: fit-content;
 }
 
+.task-card .title {
+    font: 500 16px/32px Roboto,"Helvetica Neue",sans-serif;
+    margin: 0px;
+    margin-right: 20px;
+    overflow-x: hidden;
+    max-width: inherit;
+    white-space: nowrap;
+}
+
+.task-card .subtitle {
+    margin-top: -17px;
+}
+
+.content {
+    display: flex;
+}
+
+.right-content {
+    flex: 70%;
+}
+
+.left-content {
+    flex: 30%;
+}
+
 .subtitle 
 {
     color: #949494;
@@ -45,7 +70,7 @@ mat-card-subtitle {
     background: #fff;
     color: rgba(0,0,0,.87);
     width: 400px;
-    
+    margin-bottom: 20px;
 }
 
 .skills-card mat-card-header {
@@ -70,4 +95,100 @@ mat-card-subtitle {
 
 .skill-name {
     font: 500 17px/32px Roboto,"Helvetica Neue",sans-serif;
+}
+
+.task-card {
+    max-width: 350px;
+    width: fit-content;
+    padding: 0px;
+    margin: 10px;
+}
+
+.task-card mat-card-header {
+    background-color: #d4e2ff;
+    font: 500 18px/32px Roboto,"Helvetica Neue",sans-serif;
+    padding: 6px;
+}
+
+.selected {
+    background-color: #ffe9d4 !important;
+}
+
+.task-card mat-card-title {
+    margin-bottom: 0px;
+}
+
+.tasks {
+    display: flex;
+    flex-wrap: wrap;
+    
+    width: fit-content;
+}
+
+mat-card-header {
+    max-width: inherit;
+}
+
+.task-card mat-card-content {
+    padding: 10px;
+    font: 500 16px Roboto,"Helvetica Neue",sans-serif;
+}
+
+.stats div {
+    padding-top: 10px;
+    padding-left: 7px;
+}
+
+.task-description {
+    text-align: center;
+    padding: 0 0 10px 10px;
+    grid-row: 1
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: auto-fill;
+}
+
+.stats {
+    grid-row: 2;
+}
+
+.stats div:last-child {
+    padding-bottom: 10px;
+}
+
+.task-panel {
+    padding-top: 10px;
+    grid-row: 3;
+}
+
+.contacts .subtitle {
+    margin-top: -17px;
+}
+
+.task-detailed-card mat-card-header {
+    background-color: #d4e2ff;
+    font: 500 18px/32px Roboto,"Helvetica Neue",sans-serif;
+    padding: 6px;
+}
+
+.task-detailed-card {
+    padding: 0px;
+    margin: 10px;
+    padding-bottom: 10px;
+}
+
+.task-detailed-card .title {
+    font: 500 16px/32px Roboto,"Helvetica Neue",sans-serif;
+    margin: 0px;
+    margin-right: 20px;
+    overflow-x: hidden;
+    max-width: inherit;
+    white-space: nowrap;
+}
+
+.task-detailed-card mat-card-actions {
+    margin-left: 40px;
+    margin-bottom: 10px;
 }

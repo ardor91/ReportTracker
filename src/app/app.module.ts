@@ -19,6 +19,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatCardModule,
     MatBadgeModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

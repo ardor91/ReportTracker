@@ -1,6 +1,8 @@
 export class Task {
     name: string;
     description: string;
+    startDate: string;
+    endDate: string;
     reports: Report[];
 
     public constructor(init?: Partial<Task>) {
