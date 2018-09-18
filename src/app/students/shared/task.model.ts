@@ -10,11 +10,21 @@ export class Task {
       }
 }
 
-class Report {
+export class Report {
     date: string;
-    content: string;
+    content: ReportDetails;
 
     public constructor(init?: Partial<Report>) {
+        Object.assign(this, init);
+      }
+}
+
+class ReportDetails {
+    workCompleted: string;
+    workPlanned: string;
+    problems: string;
+
+    public constructor(init?: Partial<ReportDetails>) {
         Object.assign(this, init);
       }
 }

@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Student } from '../shared/student.model';
 import { Task } from '../shared/task.model';
 import { StudentsService } from '../students.service';
+import { Report } from '../shared/task.model';
 
 @Component({
   selector: 'app-student-detail',
@@ -15,6 +16,8 @@ export class StudentDetailComponent implements OnInit {
   student: Student;
   tasks: Task[];
   selectedTask: Task;
+  selectedReport: Report;
+  lastViewDate: Date;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,11 +34,43 @@ export class StudentDetailComponent implements OnInit {
     this.studentsService.getStudent(id)
       .subscribe(student => {
         console.log(student);
-        this.student = student});
+        this.student = student;
+        this.sortTasks(this.student);
+        this.student.tasks.forEach(task => {
+          this.sortReports(task);
+          let temp = localStorage.getItem('lastStudent'+this.student.id+'ViewDate');
+          if(temp)
+            //this.lastViewDate = new Date(temp);
+            this.lastViewDate = new Date(-8640000000000000);
+          else
+            this.lastViewDate = new Date(-8640000000000000);
+          localStorage.setItem('lastStudent'+this.student.id+'ViewDate', new Date().toString());
+        });
+        
+      });
   }
 
-  sortTasks(): void {
-    
+  logReport(report: Report): void {
+    console.log(report);
+  }
+
+  sortTasks(student: Student): void {
+    student.tasks.sort(function(a,b) {
+      if(!a.endDate && b.endDate)
+        return -1;
+      if(a.endDate && !b.endDate)
+        return 1;
+      if(a.endDate && b.endDate)
+      {
+        return a.endDate < b.endDate ? 1 : -1;
+      }
+      return a.startDate < b.startDate ? 1 : a.startDate > b.startDate ? -1 : 0;
+      
+    })
+  }
+
+  sortReports(task: Task): void {
+    task.reports.sort((a, b) => a.date < b.date ? 1 : a.date > b.date ? -1 : 0)
   }
 
   goBack(): void {

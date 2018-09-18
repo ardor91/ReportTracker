@@ -23,11 +23,11 @@
 }
 
 .right-content {
-    flex: 70%;
+    flex: 80%;
 }
 
 .left-content {
-    flex: 30%;
+    flex: 0 0 420px;
 }
 
 .subtitle 
@@ -40,9 +40,10 @@
 
 .contact-card {
     max-width: 200px;
-    margin-right: 15px;
+    
     padding: 20px;
     border-top: 5px solid #d4e2ff;
+    margin-bottom: 10px;
 }
 
 .content {
@@ -51,7 +52,10 @@
 
 .contacts {
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin-bottom: 15px;
+    max-width: 400px;
 }
 
 .contact-icon {
@@ -99,9 +103,11 @@ mat-card-subtitle {
 
 .task-card {
     max-width: 350px;
-    width: fit-content;
+    width: 350px;
     padding: 0px;
     margin: 10px;
+    margin-top: 0px;
+    margin-right: 0px;
 }
 
 .task-card mat-card-header {
@@ -110,7 +116,7 @@ mat-card-subtitle {
     padding: 6px;
 }
 
-.selected {
+.task-card mat-card-header:hover {
     background-color: #ffe9d4 !important;
 }
 
@@ -142,16 +148,12 @@ mat-card-header {
 .task-description {
     text-align: center;
     padding: 0 0 10px 10px;
-    grid-row: 1
 }
 
 .grid {
     display: grid;
-    grid-template-rows: auto-fill;
-}
-
-.stats {
-    grid-row: 2;
+    grid-template-rows: 60px auto 50px;
+    grid-gap: 1px;
 }
 
 .stats div:last-child {
@@ -160,7 +162,11 @@ mat-card-header {
 
 .task-panel {
     padding-top: 10px;
-    grid-row: 3;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 .contacts .subtitle {
@@ -177,6 +183,8 @@ mat-card-header {
     padding: 0px;
     margin: 10px;
     padding-bottom: 10px;
+    margin-top: 0px;
+    height: calc(100vh - 250px);
 }
 
 .task-detailed-card .title {
@@ -191,4 +199,54 @@ mat-card-header {
 .task-detailed-card mat-card-actions {
     margin-left: 40px;
     margin-bottom: 10px;
+}
+
+.task-details-wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.report-list {
+    flex: 20%;
+    max-width: 200px;
+    border-right: 1px rgba(0,0,0,.12) solid;
+    overflow-y: scroll;
+    max-height: calc(100vh - 400px);
+}
+
+::-webkit-scrollbar {
+    display: none;
+    }
+
+.report-content {
+    flex: 80%;
+}
+
+.report-date:not(.selected):hover {
+    background: #d4e2ff;
+}
+
+.report-date {
+    cursor: pointer;
+}
+
+.selected-report div {
+    margin-bottom: 20px;
+    margin-left: 25px;
+    border: 1px rgba(0,0,0,.12) solid;
+    border-radius: 4px;
+    padding: 5px;
+    margin-right: 25px;
+    min-height: 50px;
+}
+
+.selected-report span {
+    font: bold 16px/32px Roboto,"Helvetica Neue",sans-serif;
+    margin: 2px;
+    margin-left: 10px;
+
+}
+
+.selected {
+    background-color: #ffe9d4;
 }

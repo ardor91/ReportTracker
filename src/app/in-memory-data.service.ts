@@ -18,6 +18,22 @@ export class InMemoryDataService implements InMemoryDbService {
             {
                 type: "skype",
                 value: "ololoev312"
+            },
+            {
+                type: "skype",
+                value: "ololoev3126545rrrr6"
+            },
+            {
+                type: "skype",
+                value: "olol62"
+            },
+            {
+                type: "skype",
+                value: "6545rrrr6"
+            },
+            {
+                type: "skype",
+                value: "o5455"
             }
         ],
         skills: [
@@ -35,15 +51,23 @@ export class InMemoryDataService implements InMemoryDbService {
                 name: "Angular Tour Of Heroes",
                 description: "Research tutorial",
                 startDate: "2018-01-02T00:00:00",
-                endDate: "2018-03-02T00:00:00",
+                endDate: "2018-03-05T00:00:00",
                 reports: [
                     {
-                        date: "1 June 2018",
-                        content: "Completed 1st lesson"
+                        date: "2018-03-02T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
                     },
                     {
-                        date: "10 June 2018",
-                        content: "Completed 2nd lesson"
+                        date: "2018-03-02T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
                     }
                 ]
             },
@@ -54,13 +78,142 @@ export class InMemoryDataService implements InMemoryDbService {
                 endDate: "",
                 reports: [
                     {
-                        date: "1 June 2018",
-                        content: "Completed 1st lesson"
+                        date: "2018-07-01T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
                     },
                     {
-                        date: "10 June 2018",
-                        content: "Completed 2nd lesson"
+                        date: "2018-07-02T00:00:00",
+                        content: {
+                            workCompleted: "BLYAAAAA",
+                            workPlanned: "PIZDES!!!!!!!!!!",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-03T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-04T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-05T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-06T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-07T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-08T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-09T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-10T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-11T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-11T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-11T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-11T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-11T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-11T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-07-11T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
                     }
+                    
                 ]
             },
             {
@@ -115,7 +268,24 @@ export class InMemoryDataService implements InMemoryDbService {
                 name: "Angular Tour Of Heroes - Enhancement 5",
                 description: "Continue studying. Implement MongoDB integration, Material styles, etc.",
                 startDate: "2018-03-02T00:00:00",
-                endDate: "",
+                endDate: "2018-04-02T00:00:00",
+                reports: [
+                    {
+                        date: "1 June 2018",
+                        content: "Completed 1st lesson"
+                    },
+                    {
+                        date: "10 June 2018",
+                        content: "Completed 2nd lesson"
+                    }
+                ]
+            }
+            ,
+            {
+                name: "Angular Tour Of Heroes - Enhancement 5",
+                description: "Continue studying. Implement MongoDB integration, Material styles, etc.",
+                startDate: "2018-03-02T00:00:00",
+                endDate: "2018-03-02T00:00:00",
                 reports: [
                     {
                         date: "1 June 2018",
