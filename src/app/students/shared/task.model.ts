@@ -3,6 +3,7 @@ export class Task {
     description: string;
     startDate: string;
     endDate: string;
+    unreadCount: number;
     reports: Report[];
 
     public constructor(init?: Partial<Task>) {
@@ -12,6 +13,7 @@ export class Task {
 
 export class Report {
     date: string;
+    viewed: boolean;
     content: ReportDetails;
 
     public constructor(init?: Partial<Report>) {

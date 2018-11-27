@@ -20,6 +20,9 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ErrorComponentComponent } from './error-component/error-component.component';
+import { ErrorComponent } from './error/error.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     StudentsComponent,
     StudentsListComponent,
     StudentDetailComponent,
-    NavComponent
+    NavComponent,
+    ErrorComponentComponent,
+    ErrorComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

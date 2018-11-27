@@ -36,18 +36,44 @@ export class StudentDetailComponent implements OnInit {
         console.log(student);
         this.student = student;
         this.sortTasks(this.student);
+        let temp = localStorage.getItem('lastStudent'+this.student.id+'ViewDate');
         this.student.tasks.forEach(task => {
           this.sortReports(task);
-          let temp = localStorage.getItem('lastStudent'+this.student.id+'ViewDate');
+          
+          
           if(temp)
-            //this.lastViewDate = new Date(temp);
-            this.lastViewDate = new Date(-8640000000000000);
-          else
-            this.lastViewDate = new Date(-8640000000000000);
-          localStorage.setItem('lastStudent'+this.student.id+'ViewDate', new Date().toString());
+            this.lastViewDate = new Date(temp);
+            //this.lastViewDate = undefined;
+          
+          task.unreadCount = this.getNewReportsCount(task);
         });
-        
+        localStorage.setItem('lastStudent'+this.student.id+'ViewDate', new Date().toString());
       });
+  }
+
+  setSelectedReport(task: Task, report: Report): void {
+    this.selectedReport = report; 
+    report.viewed = true;
+    task.unreadCount = this.getNewReportsCount(task);
+  }
+
+  getNewReportsCount(task: Task): number {
+    let count = 0;
+    task.reports.forEach(report => {
+      if(this.isNewReport(report))
+        count++;
+    });
+    if(count == 0)
+      return null;
+    return count;
+  }
+
+  isNewReport(report: Report): boolean {
+    let dateObj = new Date(report.date);
+    ///console.log('lastView: ', this.lastViewDate, '; date: ', dateObj, '; result: ', !this.lastViewDate || dateObj > this.lastViewDate);
+    if(report.viewed)
+      return false;
+    return !this.lastViewDate || dateObj > this.lastViewDate;
   }
 
   logReport(report: Report): void {

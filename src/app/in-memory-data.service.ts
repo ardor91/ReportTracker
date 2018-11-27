@@ -78,6 +78,30 @@ export class InMemoryDataService implements InMemoryDbService {
                 endDate: "",
                 reports: [
                     {
+                        date: "2018-09-19T07:55:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-09-22T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
+                        date: "2018-09-20T00:00:00",
+                        content: {
+                            workCompleted: "Olallaa",
+                            workPlanned: "Tratataat",
+                            problems: "AAAAAAAAAAAAAAA"
+                        }
+                    },
+                    {
                         date: "2018-07-01T00:00:00",
                         content: {
                             workCompleted: "Olallaa",

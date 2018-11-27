@@ -66,7 +66,8 @@
                 </div>
               </mat-card-content>
               <div class="task-panel">
-                  <button mat-raised-button (click)="selectTask(task)">Reports</button>
+                  <button *ngIf="task.unreadCount && task.unreadCount > 0" class="reports-button" mat-raised-button matBadge="{{task.unreadCount}}" matBadgePosition="after" matBadgeColor="warn" (click)="selectTask(task)">Reports</button>
+                  <button *ngIf="!task.unreadCount || task.unreadCount == 0" class="reports-button" mat-raised-button (click)="selectTask(task)">Reports</button>
               </div>
         </mat-card> 
     </div>
@@ -82,8 +83,8 @@
               <div class="task-details-wrapper">
                 <div class="report-list">
                     <mat-list>
-                        <mat-list-item (click)="selectedReport = report" [ngClass]="selectedReport == report ? 'selected' : ''" class="report-date" *ngFor="let report of selectedTask.reports">
-                          <p mat-line> {{report.date | date: 'mediumDate'}} </p>
+                        <mat-list-item (click)="setSelectedReport(selectedTask, report)" [ngClass]="selectedReport == report ? 'selected' : ''" class="report-date" *ngFor="let report of selectedTask.reports">
+                          <h3 mat-line> {{report.date | date: 'mediumDate'}} <span *ngIf="isNewReport(report)" class="unread"></span></h3>
                           <mat-divider></mat-divider>
                         </mat-list-item>
                       </mat-list>
