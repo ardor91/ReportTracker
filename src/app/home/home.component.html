@@ -1,23 +1,31 @@
-<div class="MainContainer">
+<mat-grid-list cols="2" rowHeight="3:1">
+  <mat-grid-tile>
+    <mat-grid-tile-header>About</mat-grid-tile-header>
+    <div *ngFor="let item of home" class="text-inside-grid">{{ item.about }}</div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-grid-tile-header>Techologies</mat-grid-tile-header>
+    <div *ngFor="let item of home" class="text-inside-grid">{{ item.techologies }}</div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-grid-tile-header>How to hire</mat-grid-tile-header>
+    <div *ngFor="let item of home" class="text-inside-grid">{{ item.howToHire }}</div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-grid-tile-header>About hiring</mat-grid-tile-header>
+    <div *ngFor="let item of home" class="text-inside-grid">{{ item.aboutHiring }}</div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-grid-tile-header>Contacts</mat-grid-tile-header>
+    <div *ngFor="let item of home" class="text-inside-grid">{{ item.contacts }}</div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-grid-tile-header>Trends</mat-grid-tile-header>
+    <div *ngFor="let item of home" class="text-inside-grid">{{ item.trends }}</div>
+  </mat-grid-tile>
+</mat-grid-list>
 
-    <div class="parallax">
-  
-    </div>
-    
-    <div class="parallax first block">
-
-    </div>
-    
-    <div class="parallax second block">
-
-    </div>
-    
-    <div class="parallax third block">
-
-    </div>
-    
-    <div class="parallax fourth block">
-
-    </div>
-  </div>
-  
+<div class="buttons">
+  <button type="button" name="button" mat-raised-button>Test English</button>
+  <button type="button" name="button" mat-flat-button>Register</button>
+</div>
