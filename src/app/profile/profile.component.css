@@ -1,0 +1,182 @@
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.profile-title{
+  font: 500 20px/32px Roboto,"Helvetica Neue",sans-serif;
+  margin: 20px;
+  margin-left: 40px;
+  width: fit-content;
+}
+
+.profile-title>.subtitle{
+    color: #949494;
+    font-size: 14px;
+    text-align: right;
+    margin-top: -12px;
+}
+
+mat-card{
+  padding: 24px;
+}
+
+.student-details, .сontact-details, .skills-card {
+  margin: 20px;
+}
+
+.student,.details{
+  padding: 0 20px;
+}
+
+.student>mat-card-header{
+  display: flex;
+}
+
+.student-header{
+  width: auto;
+}
+
+.details{
+  padding-top: 24px;
+}
+
+.details>mat-card-content{
+  margin: 10px 5px 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details>mat-card-content>div{
+  width: 100%;
+  text-align: center;
+}
+
+.details>mat-card-content>div:not(:last-child){
+  border-right: 1px solid #f1f1f1;
+}
+
+.details>mat-card-content>div:not(:first-child){
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tutor{
+  display: flex;
+  justify-content: center;
+}
+
+.tutor>mat-card-header>mat-card-subtitle{
+  margin-top: 5px;
+}
+
+.material-icons{
+  font-size: 50px;
+}
+
+.сontact-and-skills{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.сontact-details>mat-card-header>div{
+  width: 100%;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.сontact{
+  padding: 24px 5%;
+}
+
+.contact-icon{
+  font-size: 30px;
+}
+
+.сontact-list{
+  list-style-type: none;
+  padding: 20px;
+}
+
+.сontact-list>mat-list{
+  display: flex;
+  align-items: center;
+}
+
+.сontact-list>mat-list:not(:last-child){
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.сontact-list>mat-list>div{
+  height: auto;
+}
+
+.skype>mat-list{
+  justify-content: flex-end;
+}
+
+.skype>mat-list:not(:last-child){
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.delete-right{
+  margin-right: auto;
+}
+
+.delete-right>button:hover, .delete>button:hover{
+  background-color: #3f51b5;
+  color: white;
+}
+
+ul>mat-list:hover, .skills-card>mat-card-content>mat-list>div:hover{
+  background: linear-gradient(to right, white,#f5f5f5, white);
+}
+
+.mode-edit{
+  font-size: 15px;
+}
+
+mat-accordion>mat-expansion-panel{
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 0 5px #f1f1f1;
+}
+
+
+.skills-card>mat-card-header>div{
+  width: 100%;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.skills-card>mat-card-content{
+  padding: 24px 5% 0 5%;
+}
+
+.add-skill{
+  padding: 0 5% 24px 5%;
+}
+
+.skill-exp, .delete {
+    margin-left: auto;
+    color: rgb(105, 105, 105);
+    font: 500 15px/32px Roboto,"Helvetica Neue",sans-serif;
+}
+.delete>button{
+  width: 40px;
+  height: 40px;
+}
+
+.skill-name {
+    font: 500 17px/32px Roboto,"Helvetica Neue",sans-serif;
+}
+
+.skills-card>mat-card-content>mat-list>div:not(:last-child){
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.new-skill{
+  width: 50%;
+}

@@ -5,13 +5,15 @@ import { StudentsListComponent } from './students/students-list/students-list.co
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'students', component: StudentsListComponent },
   { path: 'student/:id', component: StudentDetailComponent },
   { path: 'error', component: ErrorComponent },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({

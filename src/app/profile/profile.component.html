@@ -1,0 +1,212 @@
+<div class="profile">
+
+  <div class="profile-title">
+    <div>Your profile</div>
+    <div class="subtitle">Student</div>
+  </div>
+
+  <mat-card class="student-details">
+
+    <div class="student">
+      <mat-card-header>
+        <div mat-card-avatar class="student-header">
+          <i class="material-icons">face</i>
+        </div>
+        <table class="example-full-width" cellspacing="5">
+          <tr>
+            <td>
+              <mat-form-field class="First name">
+                <input matInput type="text" [(ngModel)]="student.firstName" placeholder="First name">
+                <button mat-button *ngIf="student.firstName" matSuffix mat-icon-button aria-label="Clear" (click)="student.firstName=''">
+              <mat-icon>close</mat-icon>
+            </button>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="Last name">
+                <input matInput type="text" [(ngModel)]="student.lastName" placeholder="Last name">
+                <button mat-button *ngIf="student.lastName" matSuffix mat-icon-button aria-label="Clear" (click)="student.lastName=''">
+              <mat-icon>close</mat-icon>
+            </button>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </mat-card-header>
+    </div>
+
+    <mat-divider></mat-divider>
+
+
+    <div class="details">
+      <mat-card-content>
+        <div class="tutor">
+          <mat-card-header>
+            <!-- <div mat-card-avatar class="student-header"><i class="material-icons">
+        record_voice_over
+        </i></div> -->
+            <mat-card-title>{{student.firstName}} {{student.lastName}}</mat-card-title>
+            <mat-card-subtitle>Tutor</mat-card-subtitle>
+          </mat-card-header>
+        </div>
+
+        <div class="level">
+          Level <span>{{student.level}}</span>
+        </div>
+
+        <div class="reports">
+          Reports <span>{{getReportsCount(student)}}</span>
+        </div>
+
+        <div class="study-time">
+          {{getStudyLength(student.startDate)}}
+        </div>
+
+        <div class="status">
+          Hired
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+
+
+  <div class="сontact-and-skills">
+    <div class="сontact-content">
+      <mat-card class="сontact-details">
+        <mat-card-header>
+          <div>Сontact details</div>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+
+        <mat-tab-group mat-stretch-tabs class="сontact">
+          <mat-tab label="Phone">
+            <ul class="сontact-list">
+              <mat-list role="list" *ngFor="let contact of phone">
+                <div mat-card-avatar>
+                  <i class="material-icons contact-icon">
+              contact_phone
+            </i>
+                </div>
+                <mat-list-item role="listitem">
+                  <li>{{contact}}</li>
+                </mat-list-item>
+                <span class="delete"><button mat-mini-fab color="white">x</button></span>
+              </mat-list>
+            </ul>
+
+            <div class="add-contact">
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Add phone
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <form class="example-form">
+                    <mat-form-field>
+                      <span matPrefix>+375 &nbsp;</span>
+                      <input matInput placeholder="Phone number" type="number" #number required>
+                      <mat-icon matSuffix class="mode-edit">mode_edit</mat-icon>
+                    </mat-form-field>
+                    <div>
+                      <button mat-raised-button color="primary" (click)="newContact(number.value,'phone'); number.value=''">Add</button>
+                    </div>
+                  </form>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+
+          </mat-tab>
+
+          <mat-tab label="Skype">
+            <ul class="сontact-list skype">
+              <mat-list role="list" *ngFor="let contact of skype">
+                <span class="delete-right"><button mat-mini-fab color="white" (click)="delete(contact);">x</button></span>
+                <mat-list-item role="listitem">
+                  <li>{{contact}}</li>
+                </mat-list-item>
+                <div mat-card-avatar>
+                  <i class="material-icons contact-icon">
+              contact_phone
+            </i>
+                </div>
+              </mat-list>
+            </ul>
+            <div class="add-contact">
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Add skype
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <form class="example-form">
+                    <mat-form-field>
+                      <input matInput placeholder="Login" #login required>
+                      <mat-icon matSuffix class="mode-edit">mode_edit</mat-icon>
+                    </mat-form-field>
+                    <div>
+                      <button mat-raised-button color="primary" (click)="newContact(login.value,'skype'); login.value=''">Add</button>
+                    </div>
+                  </form>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </div>
+
+
+    <div class="skills-content">
+      <mat-card class="skills-card">
+        <mat-card-header>
+          <div>
+            Skills
+          </div>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+          <mat-list>
+            <div *ngFor="let skill of student.skills">
+              <div>
+                <mat-list-item>
+                  <span class="skill-name">{{skill.name}}</span>
+                  <span class="skill-exp">{{ExpToText(skill.experience)}}</span>
+                  <span class="delete"><button mat-mini-fab color="white">x</button></span>
+                </mat-list-item>
+              </div>
+            </div>
+          </mat-list>
+        </mat-card-content>
+        <div class="add-skill">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Add skill
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-form-field class="new-skill">
+                <input matInput placeholder="Name" #nameSkill required>
+              </mat-form-field>
+              <mat-form-field class="new-skill">
+                <mat-select placeholder="Experience" #experience required>
+                  <mat-option *ngFor="let option of options" [value]="option.value">
+                    {{option.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <div>
+                <button mat-raised-button color="primary" (click)="newSkill(nameSkill.value,experience.value)">Add</button>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

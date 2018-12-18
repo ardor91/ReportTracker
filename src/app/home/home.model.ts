@@ -5,4 +5,8 @@ export class Home {
     aboutHiring: string;
     contacts: string;
     trends: string;
+
+    public constructor(init?: Partial<Home>) {
+        Object.assign(this, init);
+      }
 }
