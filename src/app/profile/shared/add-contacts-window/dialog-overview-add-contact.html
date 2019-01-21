@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Adding a new contact</h2>
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Contact type" name="contactType" [(ngModel)]="contactTypeValue" #contactType="ngModel" required>
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Contact" name="contactValue" [(ngModel)]="contactValueValue" #contactValue="ngModel" required>
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="contactType.valid && contactValue.valid" [disabled]="contactType.invalid || contactValue.invalid" cdkFocusInitial  (click)="add(contactType.value, contactValue.value)">Add</button>
+  </mat-dialog-actions>

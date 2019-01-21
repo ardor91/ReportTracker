@@ -24,6 +24,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -32,6 +33,10 @@ import { ErrorComponentComponent } from './error-component/error-component.compo
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AddContactsWindowComponent } from './profile/shared/add-contacts-window/add-contacts-window.component';
+import { DialogContentNewContact } from './profile/shared/add-contacts-window/add-contacts-window.component';
+import { AddSkillsWindowComponent } from './profile/shared/add-skills-window/add-skills-window.component';
+import { DialogContentNewSkill } from './profile/shared/add-skills-window/add-skills-window.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,11 @@ import { ProfileComponent } from './profile/profile.component';
     ErrorComponentComponent,
     ErrorComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddContactsWindowComponent,
+    DialogContentNewContact,
+    AddSkillsWindowComponent,
+    DialogContentNewSkill
   ],
   imports: [
     BrowserModule,
@@ -69,7 +78,12 @@ import { ProfileComponent } from './profile/profile.component';
     MatInputModule,
     MatTabsModule,
     MatExpansionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    DialogContentNewContact,
+    DialogContentNewSkill
   ],
   providers: [],
   bootstrap: [AppComponent]

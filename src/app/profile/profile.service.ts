@@ -7,6 +7,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Student } from '../students/shared/student.model';
 import { Router } from '@angular/router';
 
+import {EventEmitter} from '@angular/core';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -16,35 +18,48 @@ const httpOptions = {
 })
 export class ProfileService {
   private router: Router;
+  private id:number;
+
+  onClick:EventEmitter<any> = new EventEmitter();
 
   constructor(private http: HttpClient,
-    injector: Injector) { }
+    injector: Injector) {
+      // setTimeout(() => this.router = injector.get(Router));
+    }
 
   getStudent(id: number): Observable<Student> {
+    this.id = id;
     return this.http.get<Student>('/api/students/' + id).pipe(
       catchError(this.handleError<Student>(`getStudent id=${id}`))
     );
   }
 
-  addContact(value1,type1): Observable<any> {
-    let data = {value:value1,type:type1};
-    return this.http.post(`/api/students/`,data, httpOptions).pipe(
-
+  addNewContact(contactType, contactValue): Observable<Student> {
+    let data = {type:contactType, value:contactValue};
+    this.onClick.emit(data);
+    return this.http.put<Student>(`/api/student/${this.id}`,data).pipe(
       catchError(this.handleError<Student>(`addContact`))
     );
   }
 
-  addSkill(nameSkill, exp): Observable<any>{
+  addNewSkill(nameSkill, exp): Observable<any>{
     let data = {name:nameSkill,experience:exp};
-    return this.http.post('/api/students/',data, httpOptions).pipe(
-      catchError(this.handleError<Student>(`addContact`))
+    this.onClick.emit(data);
+    return this.http.put<Student>(`/api/studentt/${this.id}`,data).pipe(
+      catchError(this.handleError<Student>(`addSkill`))
     );
   }
 
   // delete
   deleteContact(contact): any {
     return this.http.delete('/api/students/', httpOptions).pipe(
-      catchError(this.handleError<Student>('deleteHero'))
+      catchError(this.handleError<Student>('deleteContact'))
+    );
+  }
+
+  deleteSkill(skill): any {
+    return this.http.delete('/api/students/', httpOptions).pipe(
+      catchError(this.handleError<Student>('deleteSkill'))
     );
   }
 

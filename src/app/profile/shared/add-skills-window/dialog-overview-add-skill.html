@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Adding a new skill</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Skill name" name="skillName" [(ngModel)]="skillNameValue" #skillName="ngModel" required>
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Experience" name="experienceValue" [(ngModel)]="experienceValue" #experience="ngModel" required>
+      <mat-option *ngFor="let option of options" [value]="option.value">
+        {{option.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="skillName.valid && experience.valid" [disabled]="skillName.invalid || experience.invalid" cdkFocusInitial (click)="add(skillName.value, experience.value)">Add</button>
+</mat-dialog-actions>

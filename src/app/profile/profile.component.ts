@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from '../students/shared/student.model';
 import { ProfileService } from './profile.service';
 
+const id = 1;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -10,31 +12,29 @@ import { ProfileService } from './profile.service';
 })
 export class ProfileComponent implements OnInit {
   student: Student;
-  skype = [];
-  phone = [];
-  id: number;
 
-  constructor(private profileService: ProfileService) { }
-
-  ngOnInit() {
-    this.getStudent();
+  constructor(private profileService: ProfileService) {
+    this.profileService.onClick.subscribe(data => {
+      if(data.type) {
+        this.student.contacts.push(data);
+      } else {
+        this.student.skills.push(data);
+      }
+    });
+    console.log(this.student);
   }
 
-  getStudent(): void {
-    const id = 1;
-    this.id = id;
+  ngOnInit() {
+    this.getStudent(id);
+  }
+
+  getStudent(id): void{
     this.profileService.getStudent(id)
       .subscribe(student => {
         this.student = student;
-        let contacts = this.student.contacts;
-        for (let i = 0; i < contacts.length; i++) {
-          if (contacts[i].type == 'phone') {
-            this.phone.push(contacts[i].value);
-          } else {
-            this.skype.push(contacts[i].value);
-          }
-        }
+        console.log(this.student);
       });
+      // console.log(this.student);
   }
 
 
@@ -83,48 +83,18 @@ export class ProfileComponent implements OnInit {
       option => option.value === exp)[0].name;
   }
 
-
-  newContact(value, type): string {
-    value = value.trim();
-    if (!value) { return; }
-    this.profileService.addContact( value, type)
+  deleteContact(idx) {
+    this.profileService.deleteContact(idx)
       .subscribe(contact => {
-        let newContact = { type: contact.type, value: contact.value};
-        this.student.contacts.push(newContact);
-        if (newContact.type == 'phone') {
-          this.phone.push('+375' + newContact.value);
-        } else {
-          this.skype.push(newContact.value);
-        }
-        console.log(this.student.contacts);
+        this.student.contacts.splice(idx, 1);
       });
   }
 
-  newSkill(name, experience): string{
-    name = name.trim();
-    if (!(name && experience)) { return; }
-    this.profileService.addSkill( name, experience)
-    .subscribe(skill => {
-      let newSkill = { name: skill.name, experience: skill.experience };
-      this.student.skills.push(newSkill);
-    });
-  }
-
-  delete(contact):void{
-    // console.log(this.student.contacts[1].value);
-    // console.log(contact);
-
-    this.profileService.deleteContact(contact)
-    .subscribe(contact => {
-      let index = 0;
-      for(let i=0; i < this.student.contacts.length; i++){
-        if(this.student.contacts[i].value == contact){
-          index = i;
-        }
-      }
-        this.student.contacts.splice(index, 1);
-        // console.log(index);
-    });
+  deleteSkill(idx) {
+    this.profileService.deleteSkill(idx)
+      .subscribe(skill => {
+        this.student.skills.splice(idx, 1);
+      });
   }
 
 
