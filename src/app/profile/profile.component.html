@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="profile" *ngIf="student">
 
   <div class="profile-title">
     <div>Your profile</div>
@@ -29,6 +29,7 @@
             </button>
               </mat-form-field>
             </td>
+            <button mat-stroked-button id="save-name" (click)="save()">Save</button>
           </tr>
         </table>
       </mat-card-header>
@@ -49,11 +50,11 @@
       </div>
 
       <div class="level">
-        Level <span>{{student.level}}</span>
+        <p>Level <span>{{student.level}}</span></p>
       </div>
 
       <div class="reports">
-        Reports <span>{{getReportsCount(student)}}</span>
+        <p>Reports <span>{{getReportsCount(student)}}</span></p>
       </div>
 
       <div class="study-time">
@@ -74,24 +75,25 @@
     <mat-divider></mat-divider>
 
     <div class="contacts">
+      <div class="header-contacts">
+        <p><span>Contact</span></p>
+        <p><span>Type</span></p>
+      </div>
       <div class="every-contact" *ngFor="let contact of student.contacts; let idx = index">
         <div mat-card-avatar class="icon">
           <i class="material-icons contact-icon">contact_phone</i>
         </div>
-        <p>
-          <span>{{ contact.value }}</span>
-          <br>
-          <span class="contact-type">{{ contact.type }}</span>
-        </p>
-        <button mat-icon-button color="primary" class="delete-button" (click)="deleteContact(idx)">
+        <p><span>{{ contact.value }}</span></p>
+        <p><span>{{ contact.type }}</span></p>
+        <button mat-icon-button class="delete-button" (click)="deleteContact(idx,contact.type,contact.value)">
             <mat-icon aria-label="delete icon" class="material-icons delete-icon">
               delete
             </mat-icon>
-          </button>
+        </button>
       </div>
     </div>
 
-    <div class="add-contact">
+    <div class="add-contact-and-skill">
       <app-add-contacts-window></app-add-contacts-window>
     </div>
   </mat-card>
@@ -105,21 +107,19 @@
         </div>
       </mat-card-header>
       <mat-divider></mat-divider>
-      <mat-card-content class="contacts">
-        <div *ngFor="let skill of student.skills; let idx = index" class="every-contact">
-          <span class="skill-name">{{skill.name}}</span>
-          <span class="skill-exp">{{ExpToText(skill.experience)}}</span>
-          <button mat-icon-button color="primary" class="delete-button" (click)="deleteSkill(idx)">
+      <mat-card-content class="skills">
+        <div class="every-skills" *ngFor="let skill of student.skills; let idx = index">
+          <p><span class="skill-name">{{skill.name}}</span></p>
+          <p><span class="skill-exp">{{ExpToText(skill.experience)}}</span></p>
+          <button mat-icon-button color="primary" class="delete-button" (click)="deleteSkill(idx,skill.name,skill.experience)">
               <mat-icon aria-label="delete icon" class="material-icons delete-icon">
                 delete
               </mat-icon>
-            </button>
+          </button>
         </div>
       </mat-card-content>
-      <div class="add-skill">
-        <div class="add-contact">
-          <app-add-skills-window></app-add-skills-window>
-        </div>
+      <div class="add-contact-and-skill">
+        <app-add-skills-window></app-add-skills-window>
       </div>
     </mat-card>
   </div>

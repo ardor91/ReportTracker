@@ -12,6 +12,7 @@ const id = 1;
 })
 export class ProfileComponent implements OnInit {
   student: Student;
+  displayedColumns: string[] = ['icon','value', 'type', 'delete'];
 
   constructor(private profileService: ProfileService) {
     this.profileService.onClick.subscribe(data => {
@@ -21,7 +22,7 @@ export class ProfileComponent implements OnInit {
         this.student.skills.push(data);
       }
     });
-    console.log(this.student);
+    // console.log(this.student);
   }
 
   ngOnInit() {
@@ -34,9 +35,11 @@ export class ProfileComponent implements OnInit {
         this.student = student;
         console.log(this.student);
       });
-      // console.log(this.student);
   }
 
+  save(): void {
+   this.profileService.updateStudentName(this.student).subscribe();
+ }
 
   getReportsCount(student: Student): number {
     let count = 0;
@@ -83,15 +86,15 @@ export class ProfileComponent implements OnInit {
       option => option.value === exp)[0].name;
   }
 
-  deleteContact(idx) {
-    this.profileService.deleteContact(idx)
+  deleteContact(idx,type,value) {
+    this.profileService.deleteContact(type,value, this.student)
       .subscribe(contact => {
         this.student.contacts.splice(idx, 1);
       });
   }
 
-  deleteSkill(idx) {
-    this.profileService.deleteSkill(idx)
+  deleteSkill(idx,name,experience) {
+    this.profileService.deleteSkill(name,experience, this.student)
       .subscribe(skill => {
         this.student.skills.splice(idx, 1);
       });

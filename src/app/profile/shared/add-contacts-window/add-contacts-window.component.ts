@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {ProfileService} from '../../profile.service';
+import {Student} from '../../../students/shared/student.model';
 
 @Component({
   selector: 'app-add-contacts-window',
@@ -17,9 +18,7 @@ export class AddContactsWindowComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(DialogContentNewContact);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // dialogRef.afterClosed().subscribe(result => {});
   }
 
 
@@ -31,10 +30,22 @@ export class AddContactsWindowComponent implements OnInit {
 })
 export class DialogContentNewContact {
   newContact = {};
+  student: Student;
   constructor(private profileService: ProfileService) {}
 
+  ngOnInit() {
+    this.getStudentForChange();
+  }
+
+  getStudentForChange(): void{
+    this.profileService.getStudentForChange()
+      .subscribe(student => {
+        this.student = student;
+      });
+  }
+
   add(type,value) {
-    this.profileService.addNewContact(type,value)
+    this.profileService.addNewContact(type,value,this.student)
       .subscribe(newContact => {
         this.newContact = newContact;
       });
