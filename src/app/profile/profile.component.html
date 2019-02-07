@@ -1,4 +1,4 @@
-<div class="profile">
+<div class="profile" *ngIf="student">
 
   <div class="profile-title">
     <div>Your profile</div>
@@ -93,6 +93,26 @@
 
     <div class="add-contact">
       <app-add-contacts-window></app-add-contacts-window>
+    </div>
+
+    <div class="example-container mat-elevation-z8" *ngIf="student && student.contacts">
+      <table mat-table [dataSource]="student.contacts">
+    
+        <!-- Position Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef> Value </th>
+          <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
     </div>
   </mat-card>
 

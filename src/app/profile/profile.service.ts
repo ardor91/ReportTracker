@@ -37,15 +37,16 @@ export class ProfileService {
   addNewContact(contactType, contactValue): Observable<Student> {
     let data = {type:contactType, value:contactValue};
     this.onClick.emit(data);
-    return this.http.put<Student>(`/api/student/${this.id}`,data).pipe(
-      catchError(this.handleError<Student>(`addContact`))
-    );
+    console.log("contact",data);
+      return this.http.put<Student>(`/api/students/${this.id}`,data).pipe(
+        catchError(this.handleError<Student>(`addContact`))
+      );
   }
 
   addNewSkill(nameSkill, exp): Observable<any>{
     let data = {name:nameSkill,experience:exp};
     this.onClick.emit(data);
-    return this.http.put<Student>(`/api/studentt/${this.id}`,data).pipe(
+    return this.http.put<Student>(`/api/student/${this.id}`,data).pipe(
       catchError(this.handleError<Student>(`addSkill`))
     );
   }

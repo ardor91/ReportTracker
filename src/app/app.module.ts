@@ -25,6 +25,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table'
 
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -79,7 +80,8 @@ import { DialogContentNewSkill } from './profile/shared/add-skills-window/add-sk
     MatTabsModule,
     MatExpansionModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   entryComponents: [
     DialogContentNewContact,
