@@ -34,7 +34,7 @@ export class StudentsService {
   }
 
   getStudent(id: number): Observable<Student> {
-    const url = `${this.studentsUrl}/${id}`;
+    const url = `api/student/${id}`;
     return this.http.get<Student>(url).pipe(
       //tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Student>(`getHero id=${id}`))

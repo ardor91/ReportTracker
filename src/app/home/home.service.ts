@@ -18,10 +18,10 @@ export class HomeService {
 
   constructor(private http: HttpClient) { }
 
-  getHome(): Observable<any> {
+  getDetailsOnTheMain(): Observable<any> {
     return this.http.get(this.homeUrl)
       .pipe(
-        catchError(this.handleError('getHome', []))
+        catchError(this.handleError('getDetailsOnTheMain', []))
       );
   }
 

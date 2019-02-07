@@ -17,49 +17,68 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProfileService {
-  private router: Router;
   private id:number;
+  student: Student;
 
   onClick:EventEmitter<any> = new EventEmitter();
 
   constructor(private http: HttpClient,
-    injector: Injector) {
+    // injector: Injector,
+  private router: Router) {
       // setTimeout(() => this.router = injector.get(Router));
     }
 
   getStudent(id: number): Observable<Student> {
     this.id = id;
-    return this.http.get<Student>('/api/students/' + id).pipe(
+    return this.http.get<Student>(`/api/student/${this.id}`).pipe(
       catchError(this.handleError<Student>(`getStudent id=${id}`))
     );
   }
 
-  addNewContact(contactType, contactValue): Observable<Student> {
-    let data = {type:contactType, value:contactValue};
-    this.onClick.emit(data);
-    console.log("contact",data);
-      return this.http.put<Student>(`/api/students/${this.id}`,data).pipe(
-        catchError(this.handleError<Student>(`addContact`))
-      );
+
+  updateStudentName(student: Student): Observable<any>{
+    return this.http.put<Student>(`/api/student/${student.id}`, student, httpOptions).pipe(
+      catchError(this.handleError<any>('updateStudentName'))
+    );
   }
 
-  addNewSkill(nameSkill, exp): Observable<any>{
-    let data = {name:nameSkill,experience:exp};
-    this.onClick.emit(data);
-    return this.http.put<Student>(`/api/student/${this.id}`,data).pipe(
+  getStudentForChange(): Observable<Student> {
+    return this.http.get<Student>(`/api/student/${this.id}`).pipe(
+      catchError(this.handleError<Student>(`getStudent id=${this.id}`))
+    );
+  }
+
+  addNewContact(contactType, contactValue,obj): Observable<Student> {
+    let contact = {type:contactType, value:contactValue};
+    this.onClick.emit(contact);
+    let data = obj.contacts.push(contact);
+    return this.http.put<Student>(`/api/student/${this.id}`,obj).pipe(
+      catchError(this.handleError<Student>(`addContact`))
+    );
+  }
+
+  addNewSkill(nameSkill, exp, obj): Observable<any>{
+    let skill = {name:nameSkill,experience:exp};
+    this.onClick.emit(skill);
+    let data = obj.skills.push(skill);
+    return this.http.put<Student>(`/api/student/${this.id}`,obj).pipe(
       catchError(this.handleError<Student>(`addSkill`))
     );
   }
 
   // delete
-  deleteContact(contact): any {
-    return this.http.delete('/api/students/', httpOptions).pipe(
+  deleteContact(contactType, contactValue,obj): any {
+    let contact = {type:contactType, value:contactValue};
+    let data = obj.contacts.pop(contact);
+    return this.http.put(`/api/student/${this.id}`,obj).pipe(
       catchError(this.handleError<Student>('deleteContact'))
     );
   }
 
-  deleteSkill(skill): any {
-    return this.http.delete('/api/students/', httpOptions).pipe(
+  deleteSkill(nameSkill, exp, obj): any {
+    let skill = {name:nameSkill,experience:exp};
+    let data = obj.skills.pop(skill);
+    return this.http.put(`/api/student/${this.id}`,obj).pipe(
       catchError(this.handleError<Student>('deleteSkill'))
     );
   }

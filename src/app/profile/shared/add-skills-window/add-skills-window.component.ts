@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {ProfileService} from '../../profile.service';
+import {Student} from '../../../students/shared/student.model';
 
 @Component({
   selector: 'app-add-skills-window',
@@ -17,7 +18,7 @@ export class AddSkillsWindowComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogContentNewSkill);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -30,11 +31,22 @@ export class AddSkillsWindowComponent implements OnInit {
 })
 export class DialogContentNewSkill {
   newSkill = {};
+  student: Student;
   constructor(private profileService: ProfileService) {}
 
+  ngOnInit() {
+    this.getStudentForChange();
+  }
+
+  getStudentForChange(): void{
+    this.profileService.getStudentForChange()
+      .subscribe(student => {
+        this.student = student;
+      });
+  }
+
   add(name,experience) {
-    // console.log(name, experience);
-    this.profileService.addNewSkill(name,experience)
+    this.profileService.addNewSkill(name,experience,this.student)
       .subscribe(newSkill => {
         this.newSkill = newSkill;
       });
