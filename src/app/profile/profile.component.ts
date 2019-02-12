@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Student } from '../students/shared/student.model';
 import { ProfileService } from './profile.service';
-import { DataSource } from '@angular/cdk/table';
 
 const id = 1;
 
@@ -14,10 +13,6 @@ const id = 1;
 export class ProfileComponent implements OnInit {
   student: Student;
   displayedColumns: string[] = ['icon','value', 'type', 'delete'];
-
-  displayedColumns = ['type', 'value'];
-  //dataSource = ELEMENT_DATA;
-
 
   constructor(private profileService: ProfileService) {
     this.profileService.onClick.subscribe(data => {
@@ -38,7 +33,7 @@ export class ProfileComponent implements OnInit {
     this.profileService.getStudent(id)
       .subscribe(student => {
         this.student = student;
-        console.log(this.student.contacts);
+        console.log(this.student);
       });
   }
 

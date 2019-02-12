@@ -35,7 +35,6 @@ export class ProfileService {
     );
   }
 
-
   updateStudentName(student: Student): Observable<any>{
     return this.http.put<Student>(`/api/student/${student.id}`, student, httpOptions).pipe(
       catchError(this.handleError<any>('updateStudentName'))
