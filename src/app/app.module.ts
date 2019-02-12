@@ -36,6 +36,11 @@ import { AddContactsWindowComponent } from './profile/shared/add-contacts-window
 import { DialogContentNewContact } from './profile/shared/add-contacts-window/add-contacts-window.component';
 import { AddSkillsWindowComponent } from './profile/shared/add-skills-window/add-skills-window.component';
 import { DialogContentNewSkill } from './profile/shared/add-skills-window/add-skills-window.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+import { AuthGuard } from './_guards/auth.guard';
+import { CookieService } from 'ngx-cookie-service';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,8 @@ import { DialogContentNewSkill } from './profile/shared/add-skills-window/add-sk
     AddContactsWindowComponent,
     DialogContentNewContact,
     AddSkillsWindowComponent,
-    DialogContentNewSkill
+    DialogContentNewSkill,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +88,10 @@ import { DialogContentNewSkill } from './profile/shared/add-skills-window/add-sk
     DialogContentNewContact,
     DialogContentNewSkill
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    CookieService
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

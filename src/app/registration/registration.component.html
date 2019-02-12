@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="registration">
+    <mat-card class="header">
+      <p>Sign in</p>
+    </mat-card>
+    <mat-card class="registration-card">
+      <form>
+        <div class="unit fullName">
+          <i class="material-icons">perm_identity</i>
+          <fieldset>
+            <mat-form-field appearance="legacy">
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" name="firstName" ngModel #firstName="ngModel" required>
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" name="lastName" ngModel #lastName="ngModel" required>
+            </mat-form-field>
+          </fieldset>
+        </div>
+        <div class="unit">
+          <i class="material-icons">mail_outline</i>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput email name="email" ngModel #email="ngModel" required>
+          </mat-form-field>
+        </div>
+        <div class="unit">
+          <i class="material-icons">how_to_reg</i>
+          <mat-form-field appearance="outline">
+            <mat-label>Login</mat-label>
+            <input matInput type="text" name="login" ngModel #login="ngModel" required>
+          </mat-form-field>
+        </div>
+        <div class="unit">
+          <i class="material-icons">vpn_key</i>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name="password" ngModel #password="ngModel" required>
+          </mat-form-field>
+        </div>
+      </form>
+      <button
+        mat-flat-button
+        [disabled]="firstName.invalid || lastName.invalid || email.invalid || login.invalid || password.invalid"
+        cdkFocusInitial
+        (click)="toRegister(firstName.value,lastName.value,email.value,login.value,password.value)">
+        Sign in
+      </button>
+      <p *ngIf="user" class="message">New user successfully registered.</p>
+    </mat-card>
+  </div>
+</div>

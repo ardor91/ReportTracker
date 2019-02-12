@@ -6,14 +6,20 @@ import { StudentDetailComponent } from './students/student-detail/student-detail
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+// import { AuthGuard } from './_guards/auth.guard';
+// canActivate: [AuthGuard]
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: 'students', component: StudentsListComponent },
+  { path: 'students', component: StudentsListComponent},
   { path: 'student/:id', component: StudentDetailComponent },
   { path: 'error', component: ErrorComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'home', component: HomeComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent }
 ];
 
 @NgModule({

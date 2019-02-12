@@ -1,3 +1,31 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <div class="login">
+    <mat-card class="header">
+      <p>Login</p>
+    </mat-card>
+    <mat-card class="login-card">
+      <form>
+        <div class="unit">
+          <i class="material-icons">mail_outline</i>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput email name="email" ngModel #email="ngModel" required>
+          </mat-form-field>
+        </div>
+        <div class="unit">
+          <i class="material-icons">vpn_key</i>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name="password" ngModel #password="ngModel" required>
+          </mat-form-field>
+        </div>
+      </form>
+      <button
+        mat-flat-button [disabled]="email.invalid || password.invalid" cdkFocusInitial (click)="checkLogin(email.value,password.value)">
+        Login
+      </button>
+      <p *ngIf="message == 'false'" class="message error">Invalid email or password.</p>
+      <p *ngIf="message == 'true'" class="message success">You are logged in.</p>
+    </mat-card>
+  </div>
+</div>

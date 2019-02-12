@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const app = express();
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://trackerApp:12345q@ds221095.mlab.com:21095/report-tracker', {useNewUrlParser: true });
 
 // API file for interacting with MongoDB
 const api = require('./server/routes/api');
