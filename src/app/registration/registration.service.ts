@@ -12,9 +12,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class RegistrationService {
-  private router: Router;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   newUser(data){
     const url = 'api/registration';

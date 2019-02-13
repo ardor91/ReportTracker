@@ -38,7 +38,6 @@ import { AddSkillsWindowComponent } from './profile/shared/add-skills-window/add
 import { DialogContentNewSkill } from './profile/shared/add-skills-window/add-skills-window.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-import { AuthGuard } from './_guards/auth.guard';
 import { CookieService } from 'ngx-cookie-service';
 import { RegistrationComponent } from './registration/registration.component';
 
@@ -89,7 +88,6 @@ import { RegistrationComponent } from './registration/registration.component';
     DialogContentNewSkill
   ],
   providers: [
-    AuthGuard,
     CookieService
             ],
   bootstrap: [AppComponent]

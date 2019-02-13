@@ -7,12 +7,10 @@ import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
-// import { AuthGuard } from './_guards/auth.guard';
-// canActivate: [AuthGuard]
 import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'students', component: StudentsListComponent},
   { path: 'student/:id', component: StudentDetailComponent },
   { path: 'error', component: ErrorComponent },

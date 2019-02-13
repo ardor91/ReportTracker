@@ -8,24 +8,14 @@ const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const sessionstorage = require('sessionstorage');
 const VerifyToken = require('./VerifyToken').verifyToken;
-// const access = require('./VerifyToken').access;
 const User = require('./user/User');
 
-
-
-
-var app = express();
-app.use(cookieParser());
-app.get('/cookie',function(req, res){
-     res.cookie("cookie_name" , 'cookie_value');
-});
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
   extended: true
 }));
 router.use(cookieParser());
-// app.use(express.cookieParser());
 
 var _user = '';
 
@@ -71,22 +61,10 @@ function updateToken() {
 }
 
 
-// //validation of the token for access to links
-// function checkingTokenForRouting(req, res) {
-//   let value = access();
-//   console.log(value);
-//   if (value === true) {
-//     res.cookie('auth', bcrypt.hashSync(value.toString(), 8));
-//   } else {
-//     res.cookie('auth', '');
-//   }
-// }
-
 
 //Get details on the main
 router.get('/home', VerifyToken, (req, res) => {
   updateToken();
-  // checkingTokenForRouting(req, res);
 
   connection((dbo) => {
     dbo.collection('home')
@@ -107,7 +85,6 @@ router.get('/home', VerifyToken, (req, res) => {
 // Get students
 router.get('/students', VerifyToken, (req, res) => {
   updateToken();
-  // checkingTokenForRouting(req, res);
 
   connection((dbo) => {
     dbo.collection('students')
@@ -128,7 +105,6 @@ router.get('/students', VerifyToken, (req, res) => {
 // Get one student
 router.get('/student/:id', VerifyToken, (req, res) => {
   updateToken();
-  // checkingTokenForRouting(req, res);
 
   connection((dbo) => {
     const id = +req.params.id;
@@ -150,7 +126,6 @@ router.get('/student/:id', VerifyToken, (req, res) => {
 //Update contacts and skills
 router.put('/student/:id', VerifyToken, (req, res) => {
   updateToken();
-  // checkingTokenForRouting(req, res);
 
   connection((dbo) => {
     const id = +req.params.id;
@@ -214,7 +189,8 @@ router.post('/login', function(req, res) {
     if (!passwordIsValid) return res.send(err);
     _user = user;
     updateToken();
-    // checkingTokenForRouting(req, res);
+
+    res.cookie("auth" , bcrypt.hashSync('true', 8));
 
     res.status(200).send(true);
   });

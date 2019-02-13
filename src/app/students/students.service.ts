@@ -16,11 +16,11 @@ const httpOptions = {
 })
 export class StudentsService {
   private studentsUrl = 'api/students';
-  private router: Router;
 
   constructor(
     private http: HttpClient,
-    injector: Injector
+    injector: Injector,
+    private router: Router
   ) {
     setTimeout(() => this.router = injector.get(Router));
   }
@@ -52,7 +52,7 @@ export class StudentsService {
       //this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
-      this.router.navigate(['/error']);
+      this.router.navigate(['/login']);
       return of(result as T);
     };
   }

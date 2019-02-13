@@ -14,9 +14,8 @@ import { Router } from '@angular/router';
 })
 export class HomeService {
   private homeUrl = 'api/home';
-  private router: Router;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   getDetailsOnTheMain(): Observable<any> {
     return this.http.get(this.homeUrl)
@@ -33,7 +32,7 @@ export class HomeService {
       console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
-      this.router.navigate(['/error']);
+      this.router.navigate(['/login']);
       return of(result as T);
     };
   }

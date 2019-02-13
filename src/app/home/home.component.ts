@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   getDetailsOnTheMain() {
     this.homeService.getDetailsOnTheMain()
       .subscribe(home => {
-        this.home=home[0];
+          this.home=home[0];
       });
   }
 }

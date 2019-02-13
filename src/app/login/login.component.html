@@ -21,7 +21,7 @@
         </div>
       </form>
       <button
-        mat-flat-button [disabled]="email.invalid || password.invalid" cdkFocusInitial (click)="checkLogin(email.value,password.value)">
+        mat-flat-button [disabled]="email.invalid || password.invalid" cdkFocusInitial (click)="checkLogin(email.value,password.value); errorStatus();">
         Login
       </button>
       <p *ngIf="message == 'false'" class="message error">Invalid email or password.</p>

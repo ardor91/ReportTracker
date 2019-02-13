@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
+import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   err;
   message= '';
-  constructor(private loginService: LoginService) { }
+
+  constructor(private loginService: LoginService, private appService: AppService,private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,8 +27,18 @@ export class LoginComponent implements OnInit {
         this.message = 'false';
       } else {
         this.message = 'true';
+        setTimeout(()=> {this.router.navigate(['/home'])}, 500);
       }
     });
+  }
+
+
+  errorStatus(){
+    if(this.err === null) {
+      this.appService.errorStatus('err');
+    } else {
+      this.appService.errorStatus('ok');
+    }
   }
 
 }
