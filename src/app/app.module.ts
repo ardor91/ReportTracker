@@ -40,6 +40,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { CookieService } from 'ngx-cookie-service';
 import { RegistrationComponent } from './registration/registration.component';
+import { LogoutComponent } from './logout/logout.component';
+
+import { AuthGuard } from './_guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,8 @@ import { RegistrationComponent } from './registration/registration.component';
     DialogContentNewContact,
     AddSkillsWindowComponent,
     DialogContentNewSkill,
-    RegistrationComponent
+    RegistrationComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +92,7 @@ import { RegistrationComponent } from './registration/registration.component';
     DialogContentNewSkill
   ],
   providers: [
+    AuthGuard,
     CookieService
             ],
   bootstrap: [AppComponent]

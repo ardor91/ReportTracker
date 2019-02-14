@@ -1,7 +1,7 @@
 <div class="container">
   <div class="registration">
     <mat-card class="header">
-      <p>Sign in</p>
+      <p>Check in</p>
     </mat-card>
     <mat-card class="registration-card">
       <form>
@@ -45,7 +45,7 @@
         [disabled]="firstName.invalid || lastName.invalid || email.invalid || login.invalid || password.invalid"
         cdkFocusInitial
         (click)="toRegister(firstName.value,lastName.value,email.value,login.value,password.value)">
-        Sign in
+        Check in
       </button>
       <p *ngIf="user" class="message">New user successfully registered.</p>
     </mat-card>

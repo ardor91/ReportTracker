@@ -22,10 +22,8 @@ function verifyToken(req, res, next) {
       });
     }
 
-// bcrypt.compareSync(req.body.password, user.password)
-//проверить верный ли кукис
 
-      res.cookie("auth" , bcrypt.hashSync('true', 8));
+    res.cookie("auth" , bcrypt.hashSync('true', 8));
 
     // if everything is good, save to request for use in other routes
     req.userId = decoded.id;

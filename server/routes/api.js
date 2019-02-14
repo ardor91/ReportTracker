@@ -49,7 +49,6 @@ let response = {
 };
 
 
-
 function updateToken() {
   let token = jwt.sign({
     id: _user._id
@@ -153,7 +152,15 @@ router.put('/student/:id', VerifyToken, (req, res) => {
 
 
 
+// function cleaningCookiesAndSessions(req,res){
+//   res.clearCookie('auth');
+//   sessionstorage.removeItem('x-access-token');
+// }
+
+
 router.post('/registration', function(req, res) {
+
+  // cleaningCookiesAndSessions(req,res);
 
   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
@@ -188,13 +195,27 @@ router.post('/login', function(req, res) {
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid) return res.send(err);
     _user = user;
+
+    // cleaningCookiesAndSessions(req,res);
+
+    // session creation
     updateToken();
 
+    //cookie creation
     res.cookie("auth" , bcrypt.hashSync('true', 8));
 
     res.status(200).send(true);
   });
 });
+
+
+router.post('/logout', function (req,res) {
+    res.clearCookie('auth');
+    sessionstorage.removeItem('x-access-token');
+    res.send(sessionstorage.getItem('x-access-token'));
+
+});
+
 
 
 module.exports = router;

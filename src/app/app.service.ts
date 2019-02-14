@@ -14,7 +14,7 @@ export class AppService {
 
   linkAccess(){
     this.cookieValue = this.cookieService.get('auth');
-    if(this.cookieValue ) {
+    if(this.cookieValue) {
       return true;
     } else {
       return false;
