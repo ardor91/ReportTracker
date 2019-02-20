@@ -11,7 +11,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LogoutComponent } from './logout/logout.component';
 
 import { AuthGuard } from './_guard/auth.guard';
-// canActivate: [AuthGuard]
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},

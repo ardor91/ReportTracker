@@ -152,15 +152,8 @@ router.put('/student/:id', VerifyToken, (req, res) => {
 
 
 
-// function cleaningCookiesAndSessions(req,res){
-//   res.clearCookie('auth');
-//   sessionstorage.removeItem('x-access-token');
-// }
-
-
 router.post('/registration', function(req, res) {
 
-  // cleaningCookiesAndSessions(req,res);
 
   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
@@ -195,8 +188,6 @@ router.post('/login', function(req, res) {
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid) return res.send(err);
     _user = user;
-
-    // cleaningCookiesAndSessions(req,res);
 
     // session creation
     updateToken();

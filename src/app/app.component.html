@@ -1,50 +1,50 @@
 <div class="main-container" [class.main-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="main-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <button mat-icon-button *ngIf="authService.linkAccess()" (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="main-app-name">Education & Employee Requests Portal</h1>
   </mat-toolbar>
 
   <mat-sidenav-container class="main-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <div class="" *ngIf="!authService.linkAccess()">
+      <mat-nav-list *ngIf="authService.linkAccess()">
+        <!-- <div class="" *ngIf="!authService.linkAccess()">
           <a mat-list-item routerLink="/login"><i class="material-icons">exit_to_app</i> Login</a>
         </div>
         <div class="" *ngIf="!authService.linkAccess()">
           <a mat-list-item routerLink="/registration"><i class="material-icons">exit_to_app</i>Check in</a>
-        </div>
-        <div class="" *ngIf="authService.linkAccess()">
+        </div> -->
+        <div class="">
           <a mat-list-item routerLink="/home"><i class="material-icons">home</i> Home</a>
         </div>
 
         <mat-divider></mat-divider>
-        <div class="" *ngIf="authService.linkAccess()">
+        <div class="">
           <a mat-list-item routerLink="/students"><i class="material-icons">supervisor_account</i> My Students</a>
         </div>
-        <div class="" *ngIf="authService.linkAccess()">
+        <div class="">
           <a mat-list-item routerLink="/requests"><i class="material-icons">inbox</i> Requests</a>
         </div>
-        <div class="" *ngIf="authService.linkAccess()">
+        <div class="">
           <a mat-list-item routerLink="/all-students"><i class="material-icons">build</i> Manage</a>
         </div>
-        <mat-divider *ngIf="authService.linkAccess()"></mat-divider>
-        <div class="" *ngIf="authService.linkAccess()">
+        <mat-divider></mat-divider>
+        <div class="">
           <a mat-list-item routerLink="/english-test"><i class="material-icons">school</i> Test english</a>
         </div>
-        <div class="" *ngIf="authService.linkAccess()">
+        <div class="">
           <a mat-list-item routerLink="/tech-test"><i class="material-icons">keyboard</i> Test technology</a>
         </div>
-        <div class="" *ngIf="authService.linkAccess()">
+        <div class="">
           <a mat-list-item routerLink="/tasks"><i class="material-icons">assignment</i> Tasks</a>
         </div>
-        <div class="" *ngIf="authService.linkAccess()">
+        <div class="">
           <a mat-list-item routerLink="/educations"><i class="material-icons">book</i> Educations</a>
         </div>
-        <mat-divider *ngIf="authService.linkAccess()"></mat-divider>
-        <div class="" *ngIf="authService.linkAccess()">
+        <mat-divider></mat-divider>
+        <div class="">
           <a mat-list-item routerLink="/profile"><i class="material-icons">account_circle</i> Profile</a>
         </div>
-        <div class="" *ngIf="authService.linkAccess()">
+        <div class="">
           <a mat-list-item routerLink="/logout"><i class="material-icons">exit_to_app</i> Logout</a>
         </div>
       </mat-nav-list>

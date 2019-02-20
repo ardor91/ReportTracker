@@ -10,11 +10,11 @@
           <fieldset>
             <mat-form-field appearance="legacy">
               <mat-label>First Name</mat-label>
-              <input matInput type="text" name="firstName" ngModel #firstName="ngModel" required>
+              <input matInput pattern="[A-Za-zА-Яа-яЁё]{2,20}" type="text" name="firstName" ngModel #firstName="ngModel" required>
             </mat-form-field>
             <mat-form-field appearance="legacy">
               <mat-label>Last Name</mat-label>
-              <input matInput type="text" name="lastName" ngModel #lastName="ngModel" required>
+              <input matInput pattern="[A-Za-zА-Яа-яЁё]{2,20}" type="text" name="lastName" ngModel #lastName="ngModel" required>
             </mat-form-field>
           </fieldset>
         </div>
@@ -22,21 +22,21 @@
           <i class="material-icons">mail_outline</i>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput email name="email" ngModel #email="ngModel" required>
+            <input matInput email pattern="^[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[a-z]{2,4}$" title='You can use Latin letters and symbols ".", "-", "_"' name="email" ngModel #email="ngModel" required>
           </mat-form-field>
         </div>
         <div class="unit">
           <i class="material-icons">how_to_reg</i>
           <mat-form-field appearance="outline">
             <mat-label>Login</mat-label>
-            <input matInput type="text" name="login" ngModel #login="ngModel" required>
+            <input matInput pattern="[A-Za-zА0-9]{2,20}" title='You can use Latin letters and numbers'type="text" name="login" ngModel #login="ngModel" required>
           </mat-form-field>
         </div>
         <div class="unit">
           <i class="material-icons">vpn_key</i>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput type="password" name="password" ngModel #password="ngModel" required>
+            <input matInput pattern="[A-Za-z0-9._-]{3,}" title='Password must be at least 3 characters. You can use Latin letters and symbols ".", "-", "_"' type="password" name="password" ngModel #password="ngModel" required>
           </mat-form-field>
         </div>
       </form>
@@ -47,6 +47,9 @@
         (click)="toRegister(firstName.value,lastName.value,email.value,login.value,password.value)">
         Check in
       </button>
+      <mat-card-subtitle>
+        Already have an account? <a routerLink="/login">Log in</a> here
+      </mat-card-subtitle>
       <p *ngIf="user" class="message">New user successfully registered.</p>
     </mat-card>
   </div>

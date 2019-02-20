@@ -9,14 +9,14 @@
           <i class="material-icons">mail_outline</i>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput email name="email" ngModel #email="ngModel" required>
+            <input matInput pattern="^[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[a-z]{2,4}$" title='You can use Latin letters and symbols ".", "-", "_"' email name="email" ngModel #email="ngModel" required>
           </mat-form-field>
         </div>
         <div class="unit">
           <i class="material-icons">vpn_key</i>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput type="password" name="password" ngModel #password="ngModel" required>
+            <input matInput pattern="[A-Za-z0-9._-]{3,}" title='Password must be at least 3 characters. You can use Latin letters and symbols ".", "-", "_"' type="password" name="password" ngModel #password="ngModel" required>
           </mat-form-field>
         </div>
       </form>
@@ -24,6 +24,9 @@
         mat-flat-button [disabled]="email.invalid || password.invalid" cdkFocusInitial (click)="checkLogin(email.value,password.value); errorStatus();">
         Login
       </button>
+      <mat-card-subtitle>
+        Don't have an account? <a routerLink="/registration">sign up</a> here
+      </mat-card-subtitle>
       <p *ngIf="message == 'false'" class="message error">Invalid email or password.</p>
       <p *ngIf="message == 'true'" class="message success">You are logged in.</p>
     </mat-card>

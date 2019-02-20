@@ -57,6 +57,15 @@ mat-form-field{
   background-color: #5fb1fb !important;
 }
 
+.registration-card>mat-card-subtitle{
+  margin-top: 5px;
+  text-align: center;
+}
+
+.registration-card>mat-card-subtitle>a{
+  text-decoration: none;
+}
+
 .unit{
   display: grid;
   grid-template-columns: 50px 1fr;
