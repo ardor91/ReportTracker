@@ -4,7 +4,9 @@ const UserSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   login: String,
-  password: String
+  password: String,
+  type: String,
+  // studentId: mongoose.Schema.Types.ObjectId
 });
 mongoose.model('User', UserSchema);
 

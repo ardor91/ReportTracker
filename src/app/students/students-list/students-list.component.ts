@@ -20,7 +20,7 @@ export class StudentsListComponent implements OnInit {
   getStudents(): void {
     this.studentsService.getStudents()
     .subscribe(students => {
-      this.students = students
+      this.students = students;
     });
   }
 

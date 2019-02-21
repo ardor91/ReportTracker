@@ -7,12 +7,6 @@
   <mat-sidenav-container class="main-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list *ngIf="authService.linkAccess()">
-        <!-- <div class="" *ngIf="!authService.linkAccess()">
-          <a mat-list-item routerLink="/login"><i class="material-icons">exit_to_app</i> Login</a>
-        </div>
-        <div class="" *ngIf="!authService.linkAccess()">
-          <a mat-list-item routerLink="/registration"><i class="material-icons">exit_to_app</i>Check in</a>
-        </div> -->
         <div class="">
           <a mat-list-item routerLink="/home"><i class="material-icons">home</i> Home</a>
         </div>

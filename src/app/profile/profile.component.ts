@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from '../students/shared/student.model';
 import { ProfileService } from './profile.service';
 
-const id = 1;
+const id = '5c59ac29fb6fc06f4f55c22c';
 
 @Component({
   selector: 'app-profile',
@@ -26,14 +26,19 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getStudent(id);
+    this.getStudent();
   }
 
-  getStudent(id): void{
-    this.profileService.getStudent(id)
-      .subscribe(student => {
-        this.student = student;
-        console.log(this.student);
+  getStudent(): void{
+    this.profileService.getStudent()
+      .subscribe(res => {
+        if(res !== false){
+          this.student = res;
+          this.profileService.student = this.student;
+          console.log(this.student);
+        } else {
+          console.log(this.student);
+        }
       });
   }
 
@@ -43,10 +48,12 @@ export class ProfileComponent implements OnInit {
 
   getReportsCount(student: Student): number {
     let count = 0;
-    student.tasks.forEach(element => {
-      if (element.reports)
-        count += element.reports.length;
-    });
+    if(student.tasks){
+      student.tasks.forEach(element => {
+        if (element.reports)
+          count += element.reports.length;
+      });
+    }
     return count;
   }
 

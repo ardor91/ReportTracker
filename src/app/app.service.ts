@@ -7,7 +7,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class AppService {
 
   cookieValue;
-  result;
   errStatus;
 
   constructor(private cookieService: CookieService) { }

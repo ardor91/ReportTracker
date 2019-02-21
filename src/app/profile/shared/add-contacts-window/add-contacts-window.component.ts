@@ -41,6 +41,7 @@ export class DialogContentNewContact {
     this.profileService.getStudentForChange()
       .subscribe(student => {
         this.student = student;
+
       });
   }
 

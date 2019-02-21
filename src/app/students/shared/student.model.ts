@@ -13,7 +13,8 @@ export class Student {
     contacts: Contact[];
     skills: Skill[];
     tasks: Task[];
-
+    _id: String;
+    email: String;
     public constructor(init?: Partial<Student>) {
         Object.assign(this, init);
       }

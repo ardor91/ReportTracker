@@ -8,7 +8,10 @@ const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const sessionstorage = require('sessionstorage');
 const VerifyToken = require('./VerifyToken').verifyToken;
-const User = require('./user/User');
+const User = require('./scheme/User');
+const Student = require('./scheme/Student');
+const ObjectID = require('mongodb').ObjectID;
+const { ObjectId } = require('mongodb');
 
 
 router.use(bodyParser.json());
@@ -106,9 +109,9 @@ router.get('/student/:id', VerifyToken, (req, res) => {
   updateToken();
 
   connection((dbo) => {
-    const id = +req.params.id;
+    const id = req.params.id;
     const details = {
-      "id": id
+      "_id": ObjectId(id).valueOf()
     };
     dbo.collection('students')
       .findOne(details, (err, student) => {
@@ -122,15 +125,36 @@ router.get('/student/:id', VerifyToken, (req, res) => {
 
 
 
+// Get one student
+router.get('/profile', VerifyToken, (req, res) => {
+  updateToken();
+
+  if(_user.type === 'student'){
+    const profile = { "email": _user.email };
+    Student.findOne(profile, function(err, student) {
+      if (err) {
+        sendError(err, res);
+      }
+
+        res.status(200).send(student);
+      });
+  } else {
+    res.status(200).send(false);
+  }
+
+});
+
+
+
 //Update contacts and skills
 router.put('/student/:id', VerifyToken, (req, res) => {
   updateToken();
 
   connection((dbo) => {
-    const id = +req.params.id;
+    const id = req.params.id;
     dbo.collection('students')
       .updateOne({
-          "id": id
+          "_id": ObjectId(id).valueOf()
         }, {
           $set: {
             "firstName": req.body.firstName,
@@ -156,19 +180,41 @@ router.post('/registration', function(req, res) {
 
 
   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+  var id;
 
-  User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      login: req.body.login,
-      password: hashedPassword
-    },
-    function(err, user) {
-      if (err) return res.status(500).send("There was a problem registering the user`.");
+    Student.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        head: [],
+        level: 1,
+        startDate: "2018-09-01T00:00:00",
+        contacts: [],
+        skills: [],
+        tasks: [],
+        email: req.body.email
+      },
+      function(err, user) {
+        if (err) return res.status(500).send("There was a problem registering the user`.");
 
-      res.status(200).send(user);
-    });
+        res.status(200);
+        id = user._id;
+      });
+
+      User.create({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          login: req.body.login,
+          password: hashedPassword,
+          type: "student",
+          // studentId: ObjectId(id).valueOf()
+        },
+        function(err, user) {
+          if (err) return res.status(500).send("There was a problem registering the user`.");
+
+          // console.log(ObjectId(id).valueOf());
+          res.status(200).send(user);
+        });
 
 });
 

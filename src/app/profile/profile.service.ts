@@ -28,22 +28,21 @@ export class ProfileService {
       // setTimeout(() => this.router = injector.get(Router));
     }
 
-  getStudent(id: number): Observable<Student> {
-    this.id = id;
-    return this.http.get<Student>(`/api/student/${this.id}`).pipe(
-      catchError(this.handleError<Student>(`getStudent id=${id}`))
+  getStudent(): Observable<any> {
+    return this.http.get<Student>(`/api/profile`).pipe(
+      catchError(this.handleError<Student>(`getStudent `))
     );
   }
 
   updateStudentName(student: Student): Observable<any>{
-    return this.http.put<Student>(`/api/student/${student.id}`, student, httpOptions).pipe(
+    return this.http.put<Student>(`/api/student/${student._id}`, student, httpOptions).pipe(
       catchError(this.handleError<any>('updateStudentName'))
     );
   }
 
   getStudentForChange(): Observable<Student> {
-    return this.http.get<Student>(`/api/student/${this.id}`).pipe(
-      catchError(this.handleError<Student>(`getStudent id=${this.id}`))
+    return this.http.get<Student>(`/api/student/${this.student._id}`).pipe(
+      catchError(this.handleError<Student>(`getStudent id=${this.student._id}`))
     );
   }
 
@@ -51,7 +50,7 @@ export class ProfileService {
     let contact = {type:contactType, value:contactValue};
     this.onClick.emit(contact);
     let data = obj.contacts.push(contact);
-    return this.http.put<Student>(`/api/student/${this.id}`,obj).pipe(
+    return this.http.put<Student>(`/api/student/${this.student._id}`,obj).pipe(
       catchError(this.handleError<Student>(`addContact`))
     );
   }
@@ -60,7 +59,7 @@ export class ProfileService {
     let skill = {name:nameSkill,experience:exp};
     this.onClick.emit(skill);
     let data = obj.skills.push(skill);
-    return this.http.put<Student>(`/api/student/${this.id}`,obj).pipe(
+    return this.http.put<Student>(`/api/student/${this.student._id}`,obj).pipe(
       catchError(this.handleError<Student>(`addSkill`))
     );
   }
@@ -69,7 +68,7 @@ export class ProfileService {
   deleteContact(contactType, contactValue,obj): any {
     let contact = {type:contactType, value:contactValue};
     let data = obj.contacts.pop(contact);
-    return this.http.put(`/api/student/${this.id}`,obj).pipe(
+    return this.http.put(`/api/student/${this.student._id}`,obj).pipe(
       catchError(this.handleError<Student>('deleteContact'))
     );
   }
@@ -77,7 +76,7 @@ export class ProfileService {
   deleteSkill(nameSkill, exp, obj): any {
     let skill = {name:nameSkill,experience:exp};
     let data = obj.skills.pop(skill);
-    return this.http.put(`/api/student/${this.id}`,obj).pipe(
+    return this.http.put(`/api/student/${this.student._id}`,obj).pipe(
       catchError(this.handleError<Student>('deleteSkill'))
     );
   }

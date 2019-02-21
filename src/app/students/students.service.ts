@@ -16,6 +16,7 @@ const httpOptions = {
 })
 export class StudentsService {
   private studentsUrl = 'api/students';
+  // _id;
 
   constructor(
     private http: HttpClient,
@@ -33,7 +34,8 @@ export class StudentsService {
     );
   }
 
-  getStudent(id: number): Observable<Student> {
+  getStudent(id: string): Observable<Student> {
+    // this._id = id;
     const url = `api/student/${id}`;
     return this.http.get<Student>(url).pipe(
       //tap(_ => this.log(`fetched hero id=${id}`)),

@@ -30,7 +30,7 @@ export class StudentDetailComponent implements OnInit {
   }
 
   getStudent(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.studentsService.getStudent(id)
       .subscribe(student => {
         console.log(student);
@@ -39,12 +39,12 @@ export class StudentDetailComponent implements OnInit {
         let temp = localStorage.getItem('lastStudent'+this.student.id+'ViewDate');
         this.student.tasks.forEach(task => {
           this.sortReports(task);
-          
-          
+
+
           if(temp)
             this.lastViewDate = new Date(temp);
             //this.lastViewDate = undefined;
-          
+
           task.unreadCount = this.getNewReportsCount(task);
         });
         localStorage.setItem('lastStudent'+this.student.id+'ViewDate', new Date().toString());
@@ -52,7 +52,7 @@ export class StudentDetailComponent implements OnInit {
   }
 
   setSelectedReport(task: Task, report: Report): void {
-    this.selectedReport = report; 
+    this.selectedReport = report;
     report.viewed = true;
     task.unreadCount = this.getNewReportsCount(task);
   }
@@ -91,7 +91,7 @@ export class StudentDetailComponent implements OnInit {
         return a.endDate < b.endDate ? 1 : -1;
       }
       return a.startDate < b.startDate ? 1 : a.startDate > b.startDate ? -1 : 0;
-      
+
     })
   }
 
